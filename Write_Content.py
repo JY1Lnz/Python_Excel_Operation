@@ -5,20 +5,23 @@ from xlutils.copy import copy
 
 file = 'F:\Programming\Excel_operation\Output'
 
-def Write_Content(name_value, nameList, Row, Col):
+def Write_Content(name_value, nameList, SRow, ERow, NCol):
     os.chdir(file)
-
-    wordbook = xlrd.open_workbook('res.xlsx', formatting_info=True)  # 打开原本文件
+    print('写入文件开始。。。。。。')
+    wordbook = xlrd.open_workbook('one.xlsx', formatting_info=True)  # 打开原本文件
+    ws = wordbook.sheet_by_index(0)
     wordbook = copy(wordbook)  # 重新复制文件
     wordsheet = wordbook.get_sheet(0)  # 得到工作表
 
-    for name in nameList:
-        wordsheet.write(Row, Col, name)
-        for i in range(len(name_value[name])):
-            wordsheet.write(Row, Col + 1 + i, name_value[name][i])
-        Row = Row + 1
+    for i in range(SRow, ERow):
+        if ws.cell(i, 0).value in name_value:
+            for j in range(NCol):
+                wordsheet.write(i, j + 1, name_value[ws.cell(i, 0).value][j])
+        else:
+            print('Key: ',ws.cell(i, 0).value, '字典中不存在 无法写入')
+    print('写入文件结束。')
 
-    wordbook.save('res.xlsx')
+    wordbook.save('one.xlsx')
 
 
 

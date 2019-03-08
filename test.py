@@ -1,11 +1,4 @@
 
-def Get_V(elem):
-    return elem[1]
+maps = {1:2, 1:3}
 
-
-list = [[1,2], [1, 1]]
-
-list.sort(key = Get_V)
-
-print(list)
-
+print(1 in maps)
