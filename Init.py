@@ -1,18 +1,16 @@
 import os
 
 operator_path = 'F:\Programming\Excel_operation\Input'
-
 os.chdir(operator_path)
-
 dir = os.listdir(operator_path) # 获取目录中全部文件名
 
 def get(elem):
     a = elem.split('.')
-    return int(a[0])
+    return a[0]
+
 
 dir.sort(key=get)
 
-number = len(dir)
 
 def Init():
 

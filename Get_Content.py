@@ -4,6 +4,7 @@ import os
 
 file = 'F:\Programming\Excel_operation\Input'
 
+
 def Read_excel(number, people_name_row, people_name_col):
     # 挨个读入excel文件
     name_value = {}  # 名字对应内容，内容以列表形式存储
